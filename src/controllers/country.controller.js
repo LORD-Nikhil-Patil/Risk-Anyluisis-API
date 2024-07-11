@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 const { countryService } = require('../services');
 
 const getCountries = catchAsync(async (req, res) => {
-    const result = await countryService.getCountries(req.body)
+    const result = await countryService.getCountries(req.query)
     if (!result) {
         throw new ApiError(httpStatus.NOT_FOUND, 'countries not found');
     }
@@ -13,12 +13,12 @@ const getCountries = catchAsync(async (req, res) => {
 });
 
 const getFilterList = catchAsync(async (req, res) => {
-    const topics = await countryService.getFilterList(req.body.key);
+    const topics = await countryService.getAllFilterList();
     res.send(topics);
 });
 
 
-
+ 
 module.exports = {
     getCountries,
     getFilterList

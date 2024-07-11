@@ -4,7 +4,7 @@ const { toJSON } = require('./plugins');
 const countrySchema = mongoose.Schema(
     {
         end_year: {
-          type: String,
+          type: Number,
         },
         intensity: {
             type: String,
